@@ -1,0 +1,30 @@
+template: Hello, %s!
+defaultName: oescep
+
+
+# Kafka consumer configuration 
+kafkaReceiveServer:
+     bootStrapServers: 10.62.100.76:9092
+     groupId: group1
+     autoCommitInterval: 1000
+     enableAutoCommit: true
+     sessionTimeout: 30000
+     autoOffsetReset: latest
+     keyDeserializerCalss: org.apache.kafka.common.serialization.StringDeserializer
+     valueDeserializerClass: org.apache.kafka.common.serialization.StringDeserializer
+
+# Kafka producer configuration    
+kafkaSendServer:
+     bootStrapServers: 10.62.100.76:9092
+     clientId: client1
+     keyDeserializerCalss: org.apache.kafka.common.serialization.LongSerializer
+     valueDeserializerClass: org.apache.kafka.common.serialization.StringSerializer
+
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 9099
+  adminConnectors:
+    - type: http
+      port: 9098
